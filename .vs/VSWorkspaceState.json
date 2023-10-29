@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\django_testing",
+    "\\students",
+    "\\tests",
+    "\\tests\\students"
+  ],
+  "SelectedNode": "\\tests\\students\\test_courses_api.py",
+  "PreviewInSolutionExplorer": false
+}
