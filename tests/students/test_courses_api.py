@@ -57,4 +57,22 @@ class CourseTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Course.objects.count(), 2)
         self.assertEqual(response.data['name'], data['name'])
-        self.assertIn(self.student.id, response.data['students'])
+        self.assertIn(self.student.id, response.data['students']) 
+
+def test_update_course(self):
+    data = {
+        'name': 'New Course Name',
+        'students': [self.student.id],
+    }
+    response = self.client.patch(self.course_detail_url, data, format='json')
+
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertEqual(Course.objects.get(id=self.course.id).name, data['name'])
+    self.assertIn(self.student.id, response.data['students'])
+
+def test_delete_course(self):
+    response = self.client.delete(self.course_detail_url)
+
+    self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+    self.assertFalse(Course.objects.filter(id=self.course.id).exists())
+    self.assertFalse(Student.objects.filter(id=self.student.id).exists())
